@@ -9,5 +9,19 @@
  * 
  * @date 26-05-2022
  */
+#ifndef APP_COMM_HPP_
+#define APP_COMM_HPP_
 
-void func(void);
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
+
+extern TaskHandle_t xTaskAppCommHandle;
+
+/**
+ * @brief App communications task
+ * 
+ * @param pvParameters Not used
+ */
+void vTaskAppComm(void* pvParameters);
+
+#endif /* APP_COMM_HPP_ */

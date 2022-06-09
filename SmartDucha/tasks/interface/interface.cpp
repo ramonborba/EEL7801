@@ -10,10 +10,11 @@
  * @date 26-05-2022
  */
 
-#include <stdio.h>
 #include "interface.hpp"
 
-void func(void)
+TaskHandle_t xTaskInterfaceHandle;
+
+void vTaskInterface(void *pvParameters)
 {
 
 }

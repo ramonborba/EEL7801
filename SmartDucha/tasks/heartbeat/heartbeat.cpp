@@ -26,7 +26,7 @@ void vTaskHeartbeat(void *pvParameters)
 
     while (true)
     {
-        TickType_t last_cycle = xTaskGetTickCount();
+        TickType_t lastWakeTime = xTaskGetTickCount();
         if (active)
         {
             Hearbeat_LED.set_high();
@@ -37,7 +37,7 @@ void vTaskHeartbeat(void *pvParameters)
         }
         active = (active > 0) ? 0 : 1;
 
-        vTaskDelayUntil(&last_cycle, pdMS_TO_TICKS(500));
+        xTaskDelayUntil(&lastWakeTime, pdMS_TO_TICKS(500));
     }
     
 

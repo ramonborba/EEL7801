@@ -18,6 +18,12 @@
 
 void create_tasks()
 {
-    xTaskCreatePinnedToCore(vTaskHeartbeat, "TaskHeartbeat", 2048, NULL, 1, &xTaskHeartbeatHandle, tskNO_AFFINITY);
+    xTaskCreatePinnedToCore(vTaskHeartbeat,
+                            TASK_HEARTBEAT_NAME,        // Task name
+                            TASK_HEARTBEAT_STACK_SIZE,  // Task stack size
+                            NULL,                       // Task optional parameters
+                            TASK_HEARTBEAT_PRIORITY,    // Task priority
+                            &xTaskHeartbeatHandle,      // Task handle poiter
+                            TASK_HEARTBEAT_CORE);       // Task core affinity
 
 }

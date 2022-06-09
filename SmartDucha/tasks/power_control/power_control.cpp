@@ -10,10 +10,11 @@
  * @date 26-05-2022
  */
 
-#include <stdio.h>
 #include "power_control.hpp"
 
-void func(void)
+TaskHandle_t xTaskPowerControlHandle;
+
+void vTaskPowerControl(void *pvParameters)
 {
 
 }

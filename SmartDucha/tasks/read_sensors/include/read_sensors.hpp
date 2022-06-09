@@ -9,5 +9,19 @@
  * 
  * @date 26-05-2022
  */
+#ifndef READ_SENSORS_HPP_
+#define READ_SENSORS_HPP_
 
-void func(void);
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
+
+extern TaskHandle_t xTaskReadSensorsHandle;
+
+/**
+ * @brief Read sensors task
+ * 
+ * @param pvParameters Not used
+ */
+void vTaskReadSensors(void* pvParameters);
+
+#endif /* READ_SENSORS_HPP_ */

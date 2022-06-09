@@ -10,10 +10,11 @@
  * @date 26-05-2022
  */
 
-#include <stdio.h>
 #include "startup.hpp"
 
-void func(void)
+TaskHandle_t xTaskStartupHandle;
+
+void vTaskStartup(void *pvParameters)
 {
 
 }

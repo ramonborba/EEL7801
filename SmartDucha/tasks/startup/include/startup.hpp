@@ -9,5 +9,19 @@
  * 
  * @date 26-05-2022
  */
+#ifndef STARTUP_HPP_
+#define STARTUP_HPP_
 
-void func(void);
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
+
+extern TaskHandle_t xTaskStartupHandle;
+
+/**
+ * @brief Power control task
+ * 
+ * @param pvParameters Not used
+ */
+void vTaskStartup(void* pvParameters);
+
+#endif /* STARTUP_HPP_ */

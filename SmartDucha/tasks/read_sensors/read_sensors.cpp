@@ -13,7 +13,9 @@
 #include <stdio.h>
 #include "read_sensors.hpp"
 
-void func(void)
+TaskHandle_t xTaskReadSensorHandle;
+
+void vTaskReadSensor(void *pvParameters)
 {
 
 }

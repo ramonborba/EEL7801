@@ -10,10 +10,11 @@
  * @date 26-05-2022
  */
 
-#include <stdio.h>
 #include "app_comm.hpp"
 
-void func(void)
+TaskHandle_t xTaskAppCommHandle;
+
+void vTaskAppComm(void *pvParameters)
 {
 
 }
