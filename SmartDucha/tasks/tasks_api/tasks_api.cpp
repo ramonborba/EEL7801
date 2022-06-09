@@ -10,10 +10,14 @@
  * @date 26-05-2022
  */
 
-#include <stdio.h>
-#include "tasks_api.h"
+#include <cstdio>
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
 
-void func(void)
+#include "tasks_api.hpp"
+
+void create_tasks()
 {
+    xTaskCreatePinnedToCore(vTaskHeartbeat, "TaskHeartbeat", 2048, NULL, 1, &xTaskHeartbeatHandle, tskNO_AFFINITY);
 
 }

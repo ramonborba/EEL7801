@@ -11,7 +11,7 @@
  */
 
 #include <stdio.h>
-#include "app_comm.h"
+#include "app_comm.hpp"
 
 void func(void)
 {

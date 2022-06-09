@@ -11,7 +11,7 @@
  */
 
 #include <stdio.h>
-#include "interface.h"
+#include "interface.hpp"
 
 void func(void)
 {

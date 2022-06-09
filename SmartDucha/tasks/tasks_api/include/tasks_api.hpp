@@ -10,4 +10,15 @@
  * @date 26-05-2022
  */
 
-void func(void);
+#ifndef TASKS_API_HPP_
+#define TASKS_API_HPP_
+
+#include "heartbeat.hpp"
+
+/**
+ * @brief Create all tasks
+ * 
+ */
+void create_tasks();
+
+#endif /* TASKS_API_HPP_ */

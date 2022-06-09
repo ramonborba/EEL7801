@@ -11,7 +11,7 @@
  */
 
 #include <stdio.h>
-#include "startup.h"
+#include "startup.hpp"
 
 void func(void)
 {

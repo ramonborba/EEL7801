@@ -10,9 +10,13 @@
  * @date 26-05-2022
  */
 
-#include <stdio.h>
+#include <cstdio>
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
+
+#include "tasks_api.hpp"
 
 extern "C" void app_main(void)
 {
-
+    create_tasks();
 }

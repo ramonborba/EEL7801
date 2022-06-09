@@ -11,7 +11,7 @@
  */
 
 #include <stdio.h>
-#include "power_control.h"
+#include "power_control.hpp"
 
 void func(void)
 {

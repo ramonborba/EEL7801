@@ -11,7 +11,7 @@
  */
 
 #include <stdio.h>
-#include "read_sensors.h"
+#include "read_sensors.hpp"
 
 void func(void)
 {
