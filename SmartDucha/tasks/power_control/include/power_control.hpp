@@ -15,6 +15,14 @@
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 
+/* Task properties */
+#define TASK_POWER_CONTROL_NAME                 "TaskPowerControl"
+#define TASK_POWER_CONTROL_STACK_SIZE           2048
+#define TASK_POWER_CONTROL_PRIORITY             1
+#define TASK_POWER_CONTROL_PERIOD_MS            10000
+#define TASK_POWER_CONTROL_CORE        tskNO_AFFINITY
+#define TASK_POWER_CONTROL_INIT_TIMEOUT_MS      2000
+
 extern TaskHandle_t xTaskPowerControlHandle;
 
 /**

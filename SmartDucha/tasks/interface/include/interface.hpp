@@ -15,6 +15,14 @@
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 
+/* Task properties */
+#define TASK_INTERFACE_NAME                 "TaskInterface"
+#define TASK_INTERFACE_STACK_SIZE           2048
+#define TASK_INTERFACE_PRIORITY             1
+#define TASK_INTERFACE_PERIOD_MS            10000
+#define TASK_INTERFACE_CORE        tskNO_AFFINITY
+#define TASK_INTERFACE_INIT_TIMEOUT_MS      2000
+
 extern TaskHandle_t xTaskInterfaceHandle;
 
 /**

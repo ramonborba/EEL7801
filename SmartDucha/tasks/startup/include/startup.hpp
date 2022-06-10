@@ -15,6 +15,12 @@
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 
+/* Task properties */
+#define TASK_STARTUP_NAME                 "TaskStartup"
+#define TASK_STARTUP_STACK_SIZE           2048
+#define TASK_STARTUP_PRIORITY             1
+#define TASK_STARTUP_CORE        tskNO_AFFINITY
+
 extern TaskHandle_t xTaskStartupHandle;
 
 /**

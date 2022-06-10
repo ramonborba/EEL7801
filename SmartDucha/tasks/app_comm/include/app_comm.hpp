@@ -15,6 +15,15 @@
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 
+/* Task properties */
+#define TASK_APP_COMM_NAME                 "TaskAppComm"
+#define TASK_APP_COMM_STACK_SIZE           2048
+#define TASK_APP_COMM_PRIORITY             1
+#define TASK_APP_COMM_PERIOD_MS            10000
+#define TASK_APP_COMM_CORE        tskNO_AFFINITY
+#define TASK_APP_COMM_INIT_TIMEOUT_MS      2000
+
+
 extern TaskHandle_t xTaskAppCommHandle;
 
 /**

@@ -16,6 +16,7 @@
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 
+/* Task properties */
 #define TASK_HEARTBEAT_NAME                 "TaskHeartbeat"
 #define TASK_HEARTBEAT_STACK_SIZE           2048
 #define TASK_HEARTBEAT_PRIORITY             1

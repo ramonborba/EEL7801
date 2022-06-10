@@ -13,8 +13,6 @@
 #ifndef TASKS_API_HPP_
 #define TASKS_API_HPP_
 
-#include "heartbeat.hpp"
-
 /**
  * @brief Create all tasks
  * 
