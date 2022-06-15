@@ -37,7 +37,7 @@ void vTaskHeartbeat(void *pvParameters)
         }
         active = (active > 0) ? 0 : 1;
 
-        xTaskDelayUntil(&lastWakeTime, pdMS_TO_TICKS(500));
+        xTaskDelayUntil(&lastWakeTime, pdMS_TO_TICKS(TASK_HEARTBEAT_PERIOD_MS));
     }
     
 
