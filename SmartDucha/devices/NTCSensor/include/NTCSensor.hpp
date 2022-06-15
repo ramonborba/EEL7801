@@ -14,6 +14,31 @@
 
 #include <cstdint>
 
+class NTCSensor
+{
+private:
+    /**
+     * @brief Raw reading from adc
+     * 
+     */
+    uint8_t value_;
+
+    // TODO: Add ADC port information
+
+public:
+    
+    /**
+     * @brief NTCSensor constructor
+     * 
+     */
+    NTCSensor(/* args */);
+    
+    ~NTCSensor();
+    
+    uint8_t readNTC();
+};
+
+
 
 
 #endif /* NTCSENSOR_HPP_ */
