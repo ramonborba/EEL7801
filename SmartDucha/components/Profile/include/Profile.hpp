@@ -40,7 +40,7 @@ public:
     // getShowerConfig();
     void updateUser( UserData, uint8_t = 0 );
     void deleteUser( uint8_t );
-    ProfileManager getInstance();
+    static ProfileManager getInstance();
 };
 
 #endif /* PROFILE_HPP_ */
