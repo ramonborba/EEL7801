@@ -11,8 +11,22 @@
  */
 
 #include "Profile.hpp"
+#include "esp_log.h"
 
-ProfileManager::ProfileManager() : defaultUser { }, currentUser { &defaultUser }, users { defaultUser } { }
+static const char* TAG = "Profile Manager";
+
+ProfileManager::ProfileManager() : defaultUser { }, currentUser { &defaultUser }, users { defaultUser } 
+{
+    ESP_LOGD(TAG, "Profile manager object created");
+    ESP_LOGD(TAG, "Default user parameters:");
+    ESP_LOGD(TAG, "Username: %s", defaultUser.username_.c_str());
+    ESP_LOGD(TAG, "UserID: %i", defaultUser.profileID_);
+    ESP_LOGD(TAG, "Is admin: %i", defaultUser.admin == true ? 1 : 0);
+    ESP_LOGD(TAG, "Shower temp: %i", defaultUser.config.temperatura);
+    ESP_LOGD(TAG, "Shower timer: %i", defaultUser.config.tempo_maximo);
+    ESP_LOGD(TAG, "Shower valve pos: %i", defaultUser.config.vazao);
+    ESP_LOGD(TAG, "Shower valve max: %i", defaultUser.config.vazao_maximo);
+}
 
 void ProfileManager::setUsername( std::string new_name )
 {

@@ -15,11 +15,21 @@
 
 #include <string>
 
+struct ShowerConfig
+{
+    uint8_t temperatura;
+    uint8_t vazao;
+    uint8_t tempo_maximo;
+    uint8_t vazao_maximo;
+};
+
+
 struct UserData
 {
     std::string username_;
     uint8_t profileID_;
-    // Shower parameters
+    bool admin;
+    ShowerConfig config;
 };
 
 
