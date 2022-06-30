@@ -12,10 +12,18 @@
 
 #include "Shower.hpp"
 
-ShowerStateMachine::ShowerStateMachine(/* args */)
+ShowerStateMachine::ShowerStateMachine() : currentState{ &NULLState::getInstance() }
 {
 }
 
-ShowerStateMachine::~ShowerStateMachine()
+void ShowerStateMachine::runMachine()
 {
+    currentState->run(this);
+}
+
+void ShowerStateMachine::setState( ShowerState& nextState )
+{
+    currentState->exit(this);
+    currentState = &nextState;
+    currentState->enter(this);
 }

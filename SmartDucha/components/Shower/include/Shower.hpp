@@ -16,6 +16,8 @@
 #include "Profile.hpp"
 #include "ShowerState.hpp"
 
+class ShowerState;
+
 class ShowerStateMachine
 {
 private:
@@ -23,9 +25,10 @@ private:
     ProfileManager* userManager;    
     
 public:
-    ShowerStateMachine(/* args */);
-    ~ShowerStateMachine();
+    ShowerStateMachine();
+    ~ShowerStateMachine() = default;
     void startStateMachine();
+    void runMachine();
     void setState(ShowerState& nextState);
 };
 
