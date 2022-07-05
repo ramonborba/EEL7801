@@ -27,7 +27,7 @@ struct ShowerConfig
 struct UserData
 {
     std::string username_;
-    uint8_t profileID_;
+    uint16_t profileID_;
     bool admin;
     ShowerConfig config;
 };
@@ -41,15 +41,17 @@ private:
     UserData users[5];
     ProfileManager();
     void setUsername( std::string );
-    void setProfileID( uint8_t );
-    // setShowerConfig( shower config  );
+    void setProfileID( uint16_t );
+    // void setShowerConfig( ShowerConfig );
 public:
+    uint8_t checkValidID( uint16_t );
+    void setCurrentUser( uint16_t );
     std::string getUsername();
-    uint8_t getProfileID();
+    uint16_t getProfileID();
     UserData getUserData();
-    // getShowerConfig();
-    void updateUser( UserData, uint8_t = 0 );
-    void deleteUser( uint8_t );
+    ShowerConfig getShowerConfig();
+    void updateUserProfile( UserData, uint16_t = 0 );
+    void deleteUserProfile( uint16_t );
     static ProfileManager getInstance();
 };
 

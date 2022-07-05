@@ -28,6 +28,33 @@ void IdleState::enter( ShowerStateMachine* ssm )
 void IdleState::run( ShowerStateMachine* ssm )
 {
     ESP_LOGD(TAG, "Executing IdleState...");
+    
+    /** Display idle screen
+     * call display functinos to write on screen
+     */
+
+    /** Wait key press
+     * set up queue to receive key presses
+     */
+
+    if (true /* key pressed */)
+    {
+        // Change to  state
+        ssm->setState( SelectUser::getInstance() );
+        return;
+    }
+    
+    /** Check if sync is needed
+     * set up a way to check bluetooth communication
+     */
+
+    if (false /* bluetooth received */)
+    {
+        // Change to SyncApp state
+        ssm->setState( SyncApp::getInstance() );
+        return;
+    }
+    
 }
 
 void IdleState::exit( ShowerStateMachine* ssm )
@@ -42,7 +69,7 @@ ShowerState& IdleState::getInstance()
 }
 
 /**
- * @brief SelectUser definition
+ * @brief  SelectUser definition
  * 
  */
 
@@ -54,6 +81,19 @@ void SelectUser::enter( ShowerStateMachine* ssm )
 void SelectUser::run( ShowerStateMachine* ssm )
 {
     ESP_LOGD(TAG, "Executing SelectUser...");
+    
+    /** Prompt user for profileID
+     * 
+     * queue to receive keypad info
+     * check if ID valid
+     */
+    uint8_t typedID = 0;
+
+    if (true /* ID valid */)
+    {
+        ssm->userManager.setCurrentUser( typedID /* profileID */ );
+        ssm->setState( BeginShower::getInstance() );
+    }
 }
 
 void SelectUser::exit( ShowerStateMachine* ssm )
@@ -82,6 +122,19 @@ void BeginShower::enter( ShowerStateMachine* ssm )
 void BeginShower::run( ShowerStateMachine* ssm )
 {
     ESP_LOGD(TAG, "Executing BeginShower...");
+    
+    /** start shower and go to manial control
+     * 
+     * set initial shower config from profile
+     * start power control
+     * go to manual mode
+     */
+     
+    // ShowerDevice& shower = ShowerDevice::getInstance();
+    // shower.setConfig( ssm->userManager.getShowerConfig() );
+    // shower.start();
+    
+    ssm->setState( ManualControl::getInstance() );
 }
 
 void BeginShower::exit( ShowerStateMachine* ssm )
@@ -109,6 +162,22 @@ void ManualControl::enter( ShowerStateMachine* ssm )
 void ManualControl::run( ShowerStateMachine* ssm )
 {
     ESP_LOGD(TAG, "Executing ManualControl...");
+    
+    /** Change configure manually through the keypad
+     * 
+     * queue to receive valid keypad commands
+     * update config base on received command
+     */
+
+    // while (showerOn)
+    {
+    // ShowerDevice& shower = ShowerDevice::getInstance();
+    // switch (command)
+    // case X
+        // shower.updateX( newValue );
+    }
+    
+    ssm->setState( EndShower::getInstance() );
 }
 
 void ManualControl::exit( ShowerStateMachine* ssm )
@@ -136,6 +205,9 @@ void EndShower::enter( ShowerStateMachine* ssm )
 void EndShower::run( ShowerStateMachine* ssm )
 {
     ESP_LOGD(TAG, "Executing EndShower...");
+    // ShowerDevice& shower = Shower::getInstance();
+    // shower.stop();
+    ssm->setState( IdleState::getInstance() );
 }
 
 void EndShower::exit( ShowerStateMachine* ssm )
@@ -162,6 +234,17 @@ void SyncApp::enter( ShowerStateMachine* ssm )
 void SyncApp::run( ShowerStateMachine* ssm )
 {
     ESP_LOGD(TAG, "Executing SyncApp...");
+    
+    /** Get bluetooth data
+     * 
+     * queue to receive bluetooth data
+     * 
+     * updateprofile with new data
+     */
+    
+    // ssm->userManager.updateUserProfile( newData, profileID );
+    
+    ssm->setState( IdleState::getInstance() );
 }
 
 void SyncApp::exit( ShowerStateMachine* ssm )

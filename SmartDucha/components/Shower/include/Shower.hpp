@@ -22,14 +22,13 @@ class ShowerStateMachine
 {
 private:
     ShowerState* currentState;
-    ProfileManager* userManager;    
-    
 public:
     ShowerStateMachine();
     ~ShowerStateMachine() = default;
     void startStateMachine();
     void runMachine();
     void setState(ShowerState& nextState);
+    ProfileManager userManager;    
 };
 
 

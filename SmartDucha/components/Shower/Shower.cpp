@@ -12,10 +12,14 @@
 
 #include "Shower.hpp"
 
-ShowerStateMachine::ShowerStateMachine() : currentState{ &NULLState::getInstance() }
+ShowerStateMachine::ShowerStateMachine() : currentState{ &NULLState::getInstance() }, userManager{ ProfileManager::getInstance() }
 {
 }
 
+void ShowerStateMachine::startStateMachine()
+{
+    setState( IdleState::getInstance() );
+}
 void ShowerStateMachine::runMachine()
 {
     currentState->run(this);

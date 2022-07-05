@@ -30,99 +30,99 @@ public:
 class IdleState : public ShowerState
 {
 private:
-    IdleState(/* args */);
-    IdleState(const IdleState& other);
+    IdleState(/* args */) = default;
+    IdleState(const IdleState& other) = default;
 	IdleState& operator=(const IdleState& other);
 public:
     void enter( ShowerStateMachine* shower );
     void run( ShowerStateMachine* shower );
     void exit( ShowerStateMachine* shower );
     static ShowerState& getInstance();
-    ~IdleState();
+    ~IdleState() = default;
 };
 
 class SelectUser : public ShowerState
 {
 private:
-    SelectUser(/* args */);
-    SelectUser(const SelectUser& other);
+    SelectUser(/* args */) = default;
+    SelectUser(const SelectUser& other) = default;
 	SelectUser& operator=(const SelectUser& other);
 public:
     void enter( ShowerStateMachine* shower );
     void run( ShowerStateMachine* shower );
     void exit( ShowerStateMachine* shower );
     static ShowerState& getInstance();
-    ~SelectUser();
+    ~SelectUser() = default;
 };
 
 class BeginShower : public ShowerState
 {
 private:
-    BeginShower(/* args */);
-    BeginShower(const BeginShower& other);
+    BeginShower(/* args */) = default;
+    BeginShower(const BeginShower& other) = default;
 	BeginShower& operator=(const BeginShower& other);
 public:
     void enter( ShowerStateMachine* shower );
     void run( ShowerStateMachine* shower );
     void exit( ShowerStateMachine* shower );
     static ShowerState& getInstance();
-    ~BeginShower();
+    ~BeginShower() = default;
 };
 
 class ManualControl : public ShowerState
 {
 private:
-    ManualControl(/* args */);
-    ManualControl(const ManualControl& other);
+    ManualControl(/* args */) = default;
+    ManualControl(const ManualControl& other) = default;
 	ManualControl& operator=(const ManualControl& other);
 public:
     void enter( ShowerStateMachine* shower );
     void run( ShowerStateMachine* shower );
     void exit( ShowerStateMachine* shower );
     static ShowerState& getInstance();
-    ~ManualControl();
+    ~ManualControl() = default;
 };
 
 class EndShower : public ShowerState
 {
 private:
-    EndShower(/* args */);
-    EndShower(const EndShower& other);
+    EndShower(/* args */) = default;
+    EndShower(const EndShower& other) = default;
 	EndShower& operator=(const EndShower& other);
 public:
     void enter( ShowerStateMachine* shower );
     void run( ShowerStateMachine* shower );
     void exit( ShowerStateMachine* shower );
     static ShowerState& getInstance();
-    ~EndShower();
+    ~EndShower() = default;
 };
 
 class SyncApp : public ShowerState
 {
 private:
-    SyncApp(/* args */);
-    SyncApp(const SyncApp& other);
+    SyncApp(/* args */) = default;
+    SyncApp(const SyncApp& other) = default;
 	SyncApp& operator=(const SyncApp& other);
 public:
     void enter( ShowerStateMachine* shower );
     void run( ShowerStateMachine* shower );
     void exit( ShowerStateMachine* shower );
     static ShowerState& getInstance();
-    ~SyncApp();
+    ~SyncApp() = default;
 };
 
 class NULLState : public ShowerState
 {
 private:
-    NULLState(/* args */);
-    NULLState(const NULLState& other);
+    NULLState(/* args */) = default;
+    NULLState(const NULLState& other) = default;
 	NULLState& operator=(const NULLState& other);
 public:
     void enter( ShowerStateMachine* shower );
     void run( ShowerStateMachine* shower );
     void exit( ShowerStateMachine* shower );
     static ShowerState& getInstance();
-    ~NULLState();
+    ~NULLState() = default;
 };
 
 

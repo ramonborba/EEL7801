@@ -33,14 +33,47 @@ void ProfileManager::setUsername( std::string new_name )
     currentUser->username_ = new_name;
 }
 
-
-void ProfileManager::setProfileID( uint8_t newID )
+uint8_t ProfileManager::checkValidID( uint16_t newID )
 {
-    currentUser->profileID_ = newID;
+    if (newID <= 9999)
+    {
+        return 1;
+    }
+
+    return 0; 
+}
+
+void ProfileManager::setProfileID( uint16_t newID )
+{
+    if (checkValidID( newID ))
+    {
+        currentUser->profileID_ = newID;
+    }
+    else
+    {
+        ESP_LOGE(TAG, "Invalid profile ID.");
+    }
+    
 }
 
 
-// setShowerConfig( shower config  );
+// void ProfileManager::setShowerConfig( ShowerConfig newConfig )
+
+void ProfileManager::setCurrentUser( uint16_t newUserID )
+{
+    if ( checkValidID(newUserID) )
+    {
+        for (auto &user : users)
+        {
+            if (newUserID == user.profileID_)
+            {
+                currentUser = &user;
+                return;
+            }
+        }
+        ESP_LOGE(TAG, "Error changing current user.");
+    }
+}
 
 
 std::string ProfileManager::getUsername()
@@ -49,13 +82,10 @@ std::string ProfileManager::getUsername()
 }
 
 
-uint8_t ProfileManager::getProfileID()
+uint16_t ProfileManager::getProfileID()
 {
     return currentUser->profileID_;
 }
-
-
-// getShowerConfig();
 
 
 UserData ProfileManager::getUserData()
@@ -64,8 +94,14 @@ UserData ProfileManager::getUserData()
 }
 
 
-void ProfileManager::updateUser( UserData new_user, uint8_t previousID )
+ShowerConfig ProfileManager::getShowerConfig()
 {
+    return currentUser->config;
+}
+
+void ProfileManager::updateUserProfile( UserData new_user, uint16_t previousID )
+{
+    // Add error check
     for (auto &user : users)
     {
         if (user.profileID_ == previousID)
@@ -77,13 +113,14 @@ void ProfileManager::updateUser( UserData new_user, uint8_t previousID )
 }
 
 
-void ProfileManager::deleteUser( uint8_t deleteID )
+void ProfileManager::deleteUserProfile( uint16_t deleteID )
 {
+    // Add error check
     for (auto &user : users)
     {
         if (user.profileID_ == deleteID)
         {
-            user = defaultUser;
+          user = defaultUser;
             break;
         }        
     }
