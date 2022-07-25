@@ -21,10 +21,9 @@
 #define TASK_HEARTBEAT_STACK_SIZE           2048
 #define TASK_HEARTBEAT_PRIORITY             1
 #define TASK_HEARTBEAT_PERIOD_MS            500
-#define TASK_HEARTBEAT_CORE        tskNO_AFFINITY
+#define TASK_HEARTBEAT_CORE                 0
 #define TASK_HEARTBEAT_INIT_TIMEOUT_MS      2000
 
-#define HEARTBEAT_LED_PIN     2
 
 extern TaskHandle_t xTaskHeartbeatHandle;
 

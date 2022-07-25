@@ -10,9 +10,9 @@
  * @date 26-05-2022
  */
 
-#include <cstdio>
 #include "heartbeat.hpp"
 #include "gpio_cxx.hpp"
+#include "pin_defs.hpp"
 
 using namespace idf;
 

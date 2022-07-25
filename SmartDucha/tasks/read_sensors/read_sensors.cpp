@@ -20,16 +20,16 @@ static const char *READ_SENSORS_TAG = "Read Sensors Task";
 
 void vTaskReadSensor(void *pvParameters)
 {
-    NTCSensor WaterTempSensor;
+    NTCSensor tempSensor = NTCSensor::getInstance();
 
     while (true)
     {
         TickType_t lastWakeTime = xTaskGetTickCount();
 
-        uint8_t buffer;
+        uint8_t buffer = {0};
 
         ESP_LOGI(READ_SENSORS_TAG, "Reading water temperature.");
-        buffer = WaterTempSensor.readNTC();
+        buffer = tempSensor.readNTC();
         ESP_LOGI(READ_SENSORS_TAG, "Water temperature: %d", buffer);
         // TODO: Store values
 
