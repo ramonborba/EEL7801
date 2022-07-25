@@ -11,6 +11,7 @@
  */
 
 #include "ShowerState.hpp"
+#include "ShowerDevice.hpp"
 #include "esp_log.h"
 
 static const char* TAG = "ShowerState";
@@ -130,9 +131,9 @@ void BeginShower::run( ShowerStateMachine* ssm )
      * go to manual mode
      */
      
-    // ShowerDevice& shower = ShowerDevice::getInstance();
-    // shower.setConfig( ssm->userManager.getShowerConfig() );
-    // shower.start();
+    ShowerDevice& shower = ShowerDevice::getInstance();
+    shower.setConfig( ssm->userManager.getShowerConfig() );
+    shower.start();
     
     ssm->setState( ManualControl::getInstance() );
 }
