@@ -17,19 +17,19 @@
 
 struct ShowerConfig
 {
-    uint8_t temperatura;
-    uint8_t vazao;
-    uint8_t tempo_maximo;
-    uint8_t vazao_maximo;
+    uint8_t temperatura = { 38 };
+    uint8_t vazao = { 50 };
+    uint8_t tempo_maximo = { 15 };
+    uint8_t vazao_maximo = { 100 };
 };
 
 
 struct UserData
 {
-    std::string username_;
-    uint16_t profileID_;
-    bool admin;
-    ShowerConfig config;
+    std::string username_ = { "Default" };
+    uint16_t profileID_ = { 0000 };
+    bool admin = true;
+    ShowerConfig config = {};
 };
 
 
@@ -52,7 +52,7 @@ public:
     ShowerConfig getShowerConfig();
     void updateUserProfile( UserData, uint16_t = 0 );
     void deleteUserProfile( uint16_t );
-    static ProfileManager getInstance();
+    static ProfileManager& getInstance();
 };
 
 #endif /* PROFILE_HPP_ */

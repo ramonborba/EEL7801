@@ -128,7 +128,7 @@ void ProfileManager::deleteUserProfile( uint16_t deleteID )
 }
 
 
-ProfileManager ProfileManager::getInstance()
+ProfileManager& ProfileManager::getInstance()
 {
     static ProfileManager singleton;
     return singleton;
