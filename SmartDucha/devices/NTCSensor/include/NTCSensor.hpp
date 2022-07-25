@@ -21,8 +21,9 @@ private:
      * @brief Raw reading from adc
      * 
      */
-    uint8_t value_;
+    uint8_t _value;
 
+    NTCSensor(/* args */);
     // TODO: Add ADC port information
 
 public:
@@ -31,11 +32,12 @@ public:
      * @brief NTCSensor constructor
      * 
      */
-    NTCSensor(/* args */);
     
     ~NTCSensor();
     
+    static NTCSensor& getInstance();
     uint8_t readNTC();
+    uint8_t getTemp();
 };
 
 

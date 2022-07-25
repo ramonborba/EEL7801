@@ -15,9 +15,15 @@
 
 static const char* NTC_SENSOR_TAG = "NTCSensor";
 
-NTCSensor::NTCSensor(/* args */) : value_ {0} { }
+NTCSensor::NTCSensor(/* args */) : _value {0} { }
 
 NTCSensor::~NTCSensor() { }
+
+NTCSensor& NTCSensor::getInstance()
+{
+    static NTCSensor singleton;
+    return singleton;
+}
 
 uint8_t NTCSensor::readNTC()
 {
@@ -25,5 +31,10 @@ uint8_t NTCSensor::readNTC()
     // TODO: implemenent ADC readind
     // Convert value to temperature
     // value_ = temp
-    return value_;
+    return _value;
+}
+
+uint8_t NTCSensor::getTemp()
+{
+    return _value;
 }
