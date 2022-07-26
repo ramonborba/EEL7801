@@ -10,17 +10,18 @@
  * @date 26-05-2022
  */
 
-#include <cstdint>
 #include "read_sensors.hpp"
 #include "NTCSensor.hpp"
 #include "esp_log.h"
 
-TaskHandle_t xTaskReadSensorHandle;
-static const char *READ_SENSORS_TAG = "Read Sensors Task";
+TaskHandle_t xTaskReadSensorsHandle;
+static const char *TAG = "Read Sensors Task";
 
-void vTaskReadSensor(void *pvParameters)
+void vTaskReadSensors(void *pvParameters)
 {
-    NTCSensor tempSensor = NTCSensor::getInstance();
+    ESP_LOGI(TAG, "Created Read Sensors Task");
+
+    NTCSensor& tempSensor = NTCSensor::getInstance();
 
     while (true)
     {
@@ -28,10 +29,9 @@ void vTaskReadSensor(void *pvParameters)
 
         uint8_t buffer = {0};
 
-        ESP_LOGI(READ_SENSORS_TAG, "Reading water temperature.");
+        ESP_LOGD(TAG, "Reading water temperature.");
         buffer = tempSensor.readNTC();
-        ESP_LOGI(READ_SENSORS_TAG, "Water temperature: %d", buffer);
-        // TODO: Store values
+        ESP_LOGD(TAG, "Water temperature: %d", buffer);
 
         xTaskDelayUntil(&lastWakeTime, pdMS_TO_TICKS(TASK_READ_SENSORS_PERIOD_MS));
     }

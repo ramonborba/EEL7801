@@ -11,10 +11,13 @@
  */
 
 #include "startup.hpp"
+#include "esp_log.h"
 
 TaskHandle_t xTaskStartupHandle;
 
+static const char* TAG = "Startup Task";
+
 void vTaskStartup(void *pvParameters)
 {
-
+    ESP_LOGI(TAG, "Created Startup Task");
 }

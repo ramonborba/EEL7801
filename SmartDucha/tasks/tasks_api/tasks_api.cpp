@@ -10,7 +10,6 @@
  * @date 26-05-2022
  */
 
-#include <cstdio>
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 
@@ -73,7 +72,7 @@ void create_tasks()
 #endif  /* CONFIG_TASK_INTERFACE_ENABLE */
 
 
-#if defined(CONFIG_TASK_POWER_CONTROL_ENABLE) && (CONFIG_TASK_POWER_CONTROL_ENABLE == 1)
+/* #if defined(CONFIG_TASK_POWER_CONTROL_ENABLE) && (CONFIG_TASK_POWER_CONTROL_ENABLE == 1)
     xTaskCreatePinnedToCore(vTaskPowerControl,
                             TASK_POWER_CONTROL_NAME,        // Task name
                             TASK_POWER_CONTROL_STACK_SIZE,  // Task stack size
@@ -82,10 +81,10 @@ void create_tasks()
                             &xTaskPowerControlHandle,    // Task handle poiter
                             TASK_POWER_CONTROL_CORE);       // Task core affinity
 
-#endif  /* CONFIG_TASK_POWER_CONTROL_ENABLE */
+#endif */  /* CONFIG_TASK_POWER_CONTROL_ENABLE */
 
 
-#if defined(CONFIG_TASK_READ_SENSORS_ENABLE) && (CONFIG_TASK_READ_SENSORS_ENABLE == 1)
+/* #if defined(CONFIG_TASK_READ_SENSORS_ENABLE) && (CONFIG_TASK_READ_SENSORS_ENABLE == 1)
     xTaskCreatePinnedToCore(vTaskReadSensors,
                             TASK_READ_SENSORS_NAME,        // Task name
                             TASK_READ_SENSORS_STACK_SIZE,  // Task stack size
@@ -94,6 +93,6 @@ void create_tasks()
                             &xTaskReadSensorsHandle,    // Task handle poiter
                             TASK_READ_SENSORS_CORE);       // Task core affinity
 
-#endif  /* CONFIG_TASK_INTERFACE_ENABLE */
+#endif */  /* CONFIG_TASK_READ_SENSORS_ENABLE */
 
 }

@@ -14,18 +14,22 @@
 #include <freertos/task.h>
 #include "interface.hpp"
 #include "Shower.hpp"
+#include "esp_log.h"
 
 TaskHandle_t xTaskInterfaceHandle;
 
+static const char* TAG = "Interface Task";
+
 void vTaskInterface(void *pvParameters)
 {
+    ESP_LOGI(TAG, "Created Interface Task");
     ShowerStateMachine shower;
 
     shower.startStateMachine();
     while (true)
     {
         shower.runMachine();
-        vTaskDelay(pdMS_TO_TICKS(2000));
+        vTaskDelay(pdMS_TO_TICKS(5000));
     }
     
 }

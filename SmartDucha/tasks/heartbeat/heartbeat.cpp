@@ -13,15 +13,17 @@
 #include "heartbeat.hpp"
 #include "gpio_cxx.hpp"
 #include "pin_defs.hpp"
+#include "esp_log.h"
 
-using namespace idf;
 
 TaskHandle_t xTaskHeartbeatHandle;
 
+static const char* TAG = "Heartbeat Task";
+
 void vTaskHeartbeat(void *pvParameters)
 {
-    
-    GPIO_Output Hearbeat_LED(GPIONum(HEARTBEAT_LED_PIN));
+    ESP_LOGI(TAG, "Created Heartbeak Task");
+    idf::GPIO_Output Hearbeat_LED(idf::GPIONum(HEARTBEAT_LED_PIN));
     uint8_t active = 0;
 
     while (true)
