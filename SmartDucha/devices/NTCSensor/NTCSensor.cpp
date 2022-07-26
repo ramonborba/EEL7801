@@ -30,7 +30,7 @@ uint8_t NTCSensor::readNTC()
     ESP_LOGD(NTC_SENSOR_TAG, "Reading NTC value.");
     // TODO: implemenent ADC readind
     // Convert value to temperature
-    // value_ = temp
+    _value = 38; // Placeholder value
     return _value;
 }
 
