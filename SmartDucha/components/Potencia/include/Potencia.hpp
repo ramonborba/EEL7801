@@ -11,7 +11,7 @@
 
 class Potencia
 {
-private:
+protected:
 
     const uint8_t POTMIN = 10;// o detector de zero n�o � preciso o suficiente e precisamos ver se o MOC vai responder bem para ten��es baixas do inicio da onda
     const uint8_t POTMAX = 95;
@@ -30,12 +30,12 @@ private:
     uint8_t _potencia_anterior;
 
     uint8_t _Temp2Pot(uint8_t temperatura_atual, uint8_t temperatura_alvo);
+    uint16_t setInitialPower( uint8_t initialPower );
 
 public:
     Potencia();
     ~Potencia() = default;
 
-    uint16_t setInitialPower( uint8_t initialPower );
     uint16_t tempo(uint8_t temperatura_atual, uint8_t temperatura_alvo); // achei melhor assim para caso queiranois alterar depois
 };
 

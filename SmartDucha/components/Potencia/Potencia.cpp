@@ -24,7 +24,7 @@ const uint16_t Potencia::_tempos[] = { 8333, 7367, 7109, 6925, 6777, 6650, 6538,
                                 2747, 2690, 2631, 2571, 2509, 2444, 2377, 2307, 2234, 2158,
                                 2076, 1990, 1896, 1795, 1683, 1556, 1408, 1224, 967, 0 }; // tempos em us
 
-Potencia::Potencia() : _potencia_anterior { 50 } { }
+Potencia::Potencia() : _potencia_anterior { 30 } { }
 
 uint16_t Potencia::setInitialPower(uint8_t initialPower)
 {
