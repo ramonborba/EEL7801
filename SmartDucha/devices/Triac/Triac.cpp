@@ -30,8 +30,9 @@ Triac& Triac::getInstance()
 
 void Triac::pulse()
 {
-    ESP_LOGD(TAG, "<Pulsing Triac>");
+    ESP_LOGV(TAG, "<Pulsing Triac>");
     set_high();
     esp_rom_delay_us(50000);
     set_low();
+    esp_rom_delay_us(50000);
 }

@@ -23,6 +23,7 @@ extern "C" void app_main(void)
      *
      * Levels: ESP_LOG_[NONE, ERROR, DEBUG, INFO, VERBOSE]
      */
-    esp_log_level_set("*", ESP_LOG_DEBUG);
+    esp_log_level_set("*", ESP_LOG_INFO);
+    // esp_log_level_set("*", ESP_LOG_DEBUG);
     create_tasks();
 }
