@@ -20,6 +20,8 @@ public:
     void pulse();
     static Triac& getInstance();
 
+    using idf::GPIO_Output::set_low;
+
 private:
     Triac();
 };
