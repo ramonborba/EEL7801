@@ -17,6 +17,7 @@
 #include "Triac.hpp"
 #include "freertos/portmacro.h"
 #include "esp_log.h"
+#include <sys/_stdint.h>
 
 TaskHandle_t xTaskPowerControlHandle;
 StaticTask_t xTaskPowerControlBuffer;
@@ -36,7 +37,8 @@ void vTaskPowerControl(void *pvParameters)
     TickType_t startTime = xTaskGetTickCount();
     TickType_t maxTime = profile.getShowerConfig().tempo_maximo * 60 * xPortGetTickRateHz();
 
-    while ( true && ( (xTaskGetTickCount() - startTime) <= maxTime ) )
+    // uint32_t nValue = 0;
+    while ( /* xTaskGenericNotifyWait(0, 0xFFFFFFFFUL, 0xFFFFFFFFUL, &nValue, portMAX_DELAY) && */ ( (xTaskGetTickCount() - startTime) < maxTime ) )
     {
         shower.delay();
         triac.pulse();
