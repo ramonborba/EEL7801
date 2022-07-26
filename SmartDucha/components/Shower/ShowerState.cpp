@@ -206,8 +206,8 @@ void EndShower::enter( ShowerStateMachine* ssm )
 void EndShower::run( ShowerStateMachine* ssm )
 {
     ESP_LOGD(TAG, "Executing EndShower...");
-    // ShowerDevice& shower = Shower::getInstance();
-    // shower.stop();
+    ShowerDevice& shower = ShowerDevice::getInstance();
+    shower.stop();
     ssm->setState( IdleState::getInstance() );
 }
 
