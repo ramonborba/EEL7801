@@ -28,7 +28,7 @@ void IdleState::enter( ShowerStateMachine* ssm )
 
 void IdleState::run( ShowerStateMachine* ssm )
 {
-    ESP_LOGD(TAG, "Executing IdleState...");
+    ESP_LOGI(TAG, "Executing IdleState...");
     
     /** Display idle screen
      * call display functinos to write on screen
@@ -81,7 +81,7 @@ void SelectUser::enter( ShowerStateMachine* ssm )
 
 void SelectUser::run( ShowerStateMachine* ssm )
 {
-    ESP_LOGD(TAG, "Executing SelectUser...");
+    ESP_LOGI(TAG, "Executing SelectUser...");
     
     /** Prompt user for profileID
      * 
@@ -122,7 +122,7 @@ void BeginShower::enter( ShowerStateMachine* ssm )
 
 void BeginShower::run( ShowerStateMachine* ssm )
 {
-    ESP_LOGD(TAG, "Executing BeginShower...");
+    ESP_LOGI(TAG, "Executing BeginShower...");
     
     /** start shower and go to manial control
      * 
@@ -162,7 +162,7 @@ void ManualControl::enter( ShowerStateMachine* ssm )
 
 void ManualControl::run( ShowerStateMachine* ssm )
 {
-    ESP_LOGD(TAG, "Executing ManualControl...");
+    ESP_LOGI(TAG, "Executing ManualControl...");
     
     /** Change configure manually through the keypad
      * 
@@ -205,7 +205,7 @@ void EndShower::enter( ShowerStateMachine* ssm )
 
 void EndShower::run( ShowerStateMachine* ssm )
 {
-    ESP_LOGD(TAG, "Executing EndShower...");
+    ESP_LOGI(TAG, "Executing EndShower...");
     ShowerDevice& shower = ShowerDevice::getInstance();
     shower.stop();
     ssm->setState( IdleState::getInstance() );
@@ -234,7 +234,7 @@ void SyncApp::enter( ShowerStateMachine* ssm )
 
 void SyncApp::run( ShowerStateMachine* ssm )
 {
-    ESP_LOGD(TAG, "Executing SyncApp...");
+    ESP_LOGI(TAG, "Executing SyncApp...");
     
     /** Get bluetooth data
      * 

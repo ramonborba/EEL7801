@@ -13,6 +13,7 @@
 #define READ_SENSORS_HPP_
 
 #include "freertos/FreeRTOS.h"
+#include "freertos/portmacro.h"
 #include "freertos/task.h"
 
 /* Task properties */
@@ -24,6 +25,8 @@
 #define TASK_READ_SENSORS_INIT_TIMEOUT_MS      2000
 
 extern TaskHandle_t xTaskReadSensorsHandle;
+extern StaticTask_t xTaskReadSensorsBuffer;
+extern StackType_t xTaskReadSensorsStack[TASK_READ_SENSORS_STACK_SIZE];
 
 /**
  * @brief Read sensors task

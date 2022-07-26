@@ -19,13 +19,15 @@
 #include "esp_log.h"
 
 TaskHandle_t xTaskPowerControlHandle;
+StaticTask_t xTaskPowerControlBuffer;
+StackType_t  xTaskPowerControlStack[TASK_POWER_CONTROL_STACK_SIZE];
 
 static const char* TAG = "Power Control Task";
 
 void vTaskPowerControl(void *pvParameters)
 {
 
-    ESP_LOGD(TAG, "Created Power Control Task");
+    ESP_LOGI(TAG, "Created Power Control Task");
     ProfileManager& profile = ProfileManager::getInstance();
     ShowerDevice& shower = ShowerDevice::getInstance();
     NTCSensor& tempSensor = NTCSensor::getInstance();

@@ -15,6 +15,9 @@
 #include "esp_log.h"
 
 TaskHandle_t xTaskReadSensorsHandle;
+StaticTask_t xTaskReadSensorsBuffer;
+StackType_t xTaskReadSensorsStack[TASK_READ_SENSORS_STACK_SIZE];
+
 static const char *TAG = "Read Sensors Task";
 
 void vTaskReadSensors(void *pvParameters)
@@ -29,7 +32,7 @@ void vTaskReadSensors(void *pvParameters)
 
         uint8_t buffer = {0};
 
-        ESP_LOGD(TAG, "Reading water temperature.");
+        ESP_LOGI(TAG, "Reading water temperature.");
         buffer = tempSensor.readNTC();
         ESP_LOGD(TAG, "Water temperature: %d", buffer);
 

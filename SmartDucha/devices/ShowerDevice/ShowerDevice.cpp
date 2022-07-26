@@ -47,32 +47,40 @@ void ShowerDevice::start()
 
     // Create read sensors task
 #if defined(CONFIG_TASK_READ_SENSORS_ENABLE) && (CONFIG_TASK_READ_SENSORS_ENABLE == 1)
-    if( !xTaskCreatePinnedToCore(vTaskReadSensors,
-                            TASK_READ_SENSORS_NAME,        // Task name
-                            TASK_READ_SENSORS_STACK_SIZE,  // Task stack size
-                            NULL,                       // Task optional parameters
-                            TASK_READ_SENSORS_PRIORITY,    // Task priority
-                            &xTaskReadSensorsHandle,    // Task handle poiter
-                            TASK_READ_SENSORS_CORE) )       // Task core affinity
+
+    xTaskReadSensorsHandle = xTaskCreateStaticPinnedToCore(vTaskReadSensors, 
+                                                            TASK_READ_SENSORS_NAME, 
+                                                            TASK_READ_SENSORS_STACK_SIZE, 
+                                                            NULL, 
+                                                            TASK_READ_SENSORS_PRIORITY, 
+                                                            xTaskReadSensorsStack, 
+                                                            &xTaskReadSensorsBuffer, 
+                                                            TASK_READ_SENSORS_CORE);
+    if ( !xTaskReadSensorsHandle )
     {
         ESP_LOGE(TAG, "Error creating read sensors task!");
     }
+
 #endif /* CONFIG_TASK_READ_SENSORS_ENABLE */
 
     // open valve
 
     // Create power control task
 #if defined(CONFIG_TASK_POWER_CONTROL_ENABLE) && (CONFIG_TASK_POWER_CONTROL_ENABLE == 1)
-    if ( !xTaskCreatePinnedToCore(vTaskPowerControl,
-                            TASK_POWER_CONTROL_NAME,        // Task name
-                            TASK_POWER_CONTROL_STACK_SIZE,  // Task stack size
-                            NULL,                       // Task optional parameters
-                            TASK_POWER_CONTROL_PRIORITY,    // Task priority
-                            &xTaskPowerControlHandle,    // Task handle poiter
-                            TASK_POWER_CONTROL_CORE) )       // Task core affinity
+
+    xTaskPowerControlHandle = xTaskCreateStaticPinnedToCore(vTaskPowerControl, 
+                                                            TASK_POWER_CONTROL_NAME, 
+                                                            TASK_POWER_CONTROL_STACK_SIZE, 
+                                                            NULL, 
+                                                            TASK_POWER_CONTROL_PRIORITY, 
+                                                            xTaskPowerControlStack, 
+                                                            &xTaskPowerControlBuffer, 
+                                                            TASK_POWER_CONTROL_CORE);
+    if ( !xTaskPowerControlHandle )
     {
         ESP_LOGE(TAG, "Error creating power control task!");
     }
+
 #endif /* CONFIG_TASK_POWER_CONTROL_ENABLE */
 }
 

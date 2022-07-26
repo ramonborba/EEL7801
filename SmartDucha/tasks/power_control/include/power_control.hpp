@@ -13,6 +13,7 @@
 #define POWER_CONTROL_HPP_
 
 #include "freertos/FreeRTOS.h"
+#include "freertos/portmacro.h"
 #include "freertos/task.h"
 
 /* Task properties */
@@ -24,6 +25,8 @@
 #define TASK_POWER_CONTROL_INIT_TIMEOUT_MS      2000
 
 extern TaskHandle_t xTaskPowerControlHandle;
+extern StaticTask_t xTaskPowerControlBuffer;
+extern StackType_t  xTaskPowerControlStack[TASK_POWER_CONTROL_STACK_SIZE];
 
 /**
  * @brief Power control task
