@@ -14,8 +14,8 @@
 #define PIN_DEFS_HPP_
 
 /* Pin definitions */
-#define HEARTBEAT_LED_PIN     23
-#define TRIAC_PIN             2 
+#define HEARTBEAT_LED_PIN     2
+#define TRIAC_PIN             23 
 
 
 
