@@ -25,5 +25,6 @@ extern "C" void app_main(void)
      */
     esp_log_level_set("*", ESP_LOG_INFO);
     // esp_log_level_set("*", ESP_LOG_DEBUG);
+    create_event_groups();
     create_tasks();
 }

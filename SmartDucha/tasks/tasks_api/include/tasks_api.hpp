@@ -13,10 +13,16 @@
 #ifndef TASKS_API_HPP_
 #define TASKS_API_HPP_
 
+#include "freertos/FreeRTOS.h"
+#include "freertos/event_groups.h"
+
 /**
  * @brief Create all tasks
  * 
  */
 void create_tasks();
+
+
+void create_event_groups();
 
 #endif /* TASKS_API_HPP_ */

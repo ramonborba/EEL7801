@@ -14,6 +14,7 @@
 
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
+#include "freertos/event_groups.h"
 
 /* Task properties */
 #define TASK_STARTUP_NAME                 "TaskStartup"
@@ -22,6 +23,9 @@
 #define TASK_STARTUP_CORE        tskNO_AFFINITY
 
 extern TaskHandle_t xTaskStartupHandle;
+extern StaticEventGroup_t xStartupEventGroupBuffer;
+extern EventGroupHandle_t xStartupEventGroupHandle;
+
 
 /**
  * @brief Power control task

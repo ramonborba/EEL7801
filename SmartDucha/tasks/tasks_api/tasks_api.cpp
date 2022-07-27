@@ -12,6 +12,7 @@
 
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
+#include "esp_log.h"
 
 #include "tasks_api.hpp"
 #include "config.hpp"
@@ -21,6 +22,9 @@
 #include "power_control.hpp"
 #include "read_sensors.hpp"
 #include "startup.hpp"
+
+
+static const char* TAG = "Tasks Api";
 
 void create_tasks()
 {
@@ -95,4 +99,14 @@ void create_tasks()
 
 #endif */  /* CONFIG_TASK_READ_SENSORS_ENABLE */
 
+}
+
+
+void create_event_groups()
+{
+    xStartupEventGroupHandle = xEventGroupCreateStatic(&xStartupEventGroupBuffer);
+    if ( xStartupEventGroupHandle == NULL )
+    {
+        ESP_LOGE(TAG, "Failed to crate startup event group!");
+    }
 }
