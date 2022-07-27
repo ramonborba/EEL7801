@@ -494,9 +494,11 @@ public:
  */
 class GPIOIntrManager
 {
-public:
     GPIOIntrManager();
+public:
     ~GPIOIntrManager();
+
+    static GPIOIntrManager& getInstance();
 
     /**
      * @brief Assign a ISR handler function to a GPIO pin.

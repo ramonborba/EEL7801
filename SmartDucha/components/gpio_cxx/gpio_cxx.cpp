@@ -261,6 +261,12 @@ GPIOIntrManager::~GPIOIntrManager()
     ESP_LOGD(GPIO_CPP_TAG, "Uninstalled ISR service");
 }
 
+GPIOIntrManager& GPIOIntrManager::getInstance()
+{
+    static GPIOIntrManager singleton;
+    return singleton;
+}
+
 void GPIOIntrManager::add_isr_handler(GPIONum gpio_num, intr_handler_t handler, void* args){
     gpio_isr_handler_add(gpio_to_driver_type(gpio_num), handler, args);
     ESP_LOGD(GPIO_CPP_TAG, "Added ISR handler for GPIO pin %d", gpio_num.get_value());
