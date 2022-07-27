@@ -19,12 +19,12 @@
 
 static const char* TAG = "TRIAC";
 
-Triac::Triac() : idf::GPIO_Output(idf::GPIONum(HEARTBEAT_LED_PIN)) {}
+Triac::Triac(idf::GPIONum num) : idf::GPIO_Output(num) {}
 
 
 Triac& Triac::getInstance()
 {
-    static Triac singleton;
+    static Triac singleton {idf::GPIONum(HEARTBEAT_LED_PIN)};
     return singleton;
 }
 

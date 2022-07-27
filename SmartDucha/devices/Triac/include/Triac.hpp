@@ -23,5 +23,5 @@ public:
     using idf::GPIO_Output::set_low;
 
 private:
-    Triac();
+    Triac(idf::GPIONum num);
 };
