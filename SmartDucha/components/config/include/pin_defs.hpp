@@ -16,6 +16,7 @@
 /* Pin definitions */
 #define HEARTBEAT_LED_PIN     2
 #define TRIAC_PIN             23 
+#define ZERO_DETECTOR_PIN     22
 
 
 
