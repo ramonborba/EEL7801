@@ -86,27 +86,17 @@ void ShowerDevice::start()
 
 void ShowerDevice::stop()
 {
-    // suspend power control task
-    vTaskDelete(xTaskPowerControlHandle);
-    if ( xTaskPowerControlHandle )
-    {
-        ESP_LOGI(TAG, "Deleted power control task.");
-    }
-    else
-    {
-        ESP_LOGE(TAG, "Error deleting power control task!");
-    }
+    TaskHandle_t xPCHandle = xTaskPowerControlHandle;
+    TaskHandle_t xRSHandle = xTaskReadSensorsHandle;
+    // delete power control task
+    xTaskPowerControlHandle = NULL;
+    vTaskDelete(xPCHandle);
+    ESP_LOGI(TAG, "Deleted power control task.");
 
     // delete read sensors task
-    vTaskDelete(xTaskReadSensorsHandle);
-    if ( xTaskReadSensorsHandle )
-    {
+    xTaskReadSensorsHandle = NULL;
+    vTaskDelete(xRSHandle);
         ESP_LOGI(TAG, "Deleted read sensors task.");
-    }
-    else
-    {
-        ESP_LOGE(TAG, "Error deleting read sensors task!");
-    }
     
     // set triac to low
     Triac& triac = Triac::getInstance();

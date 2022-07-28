@@ -43,7 +43,7 @@ static bool checkTimeout( TickType_t elapsed, TickType_t max )
 static bool waitInerrupt()
 {
     uint32_t nValue = 0;
-    if ( xTaskGenericNotifyWait(0, 0x0UL, 0xFFFFFFFFUL, &nValue, pdMS_TO_TICKS(POWER_CONTROL_INTERRUPT_TIMEOUT) ) )
+    if ( xTaskGenericNotifyWait(0, 0x0UL, 0xFFFFFFFFUL, &nValue, portMAX_DELAY/* pdMS_TO_TICKS(POWER_CONTROL_INTERRUPT_TIMEOUT) */ ) )
     {
         return true;
     }

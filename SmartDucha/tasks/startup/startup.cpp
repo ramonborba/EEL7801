@@ -33,7 +33,8 @@ void vTaskStartup(void *pvParameters)
     zeroDetector.registerIsr(ISR_zeroDetector);
 
 
-    xEventGroupSetBits(xStartupEventGroupHandle, 0);
-
+    ESP_LOGI(TAG, "Startup task finished.");
+    xEventGroupSetBits(xStartupEventGroupHandle, 1);
+    vTaskDelete(xTaskStartupHandle);
 
 }
