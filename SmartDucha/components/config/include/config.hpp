@@ -13,7 +13,7 @@
 #define CONFIG_HPP_
 
 /* Task Enables */
-#define CONFIG_TASK_STARTUP_ENABLE          0
+#define CONFIG_TASK_STARTUP_ENABLE          1
 #define CONFIG_TASK_HEARTBEAT_ENABLE        0
 #define CONFIG_TASK_APP_COMM_ENABLE         0
 #define CONFIG_TASK_INTERFACE_ENABLE        1
