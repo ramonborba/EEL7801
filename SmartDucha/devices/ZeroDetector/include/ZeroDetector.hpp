@@ -26,6 +26,8 @@ public:
 
     void registerIsr(intr_handler_t);
     void removeIsr();
+    void enableIntr();
+    void disableIntr();
 
 private:
     ZeroDetector( idf::GPIONum );

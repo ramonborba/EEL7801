@@ -17,6 +17,7 @@
 #include "read_sensors.hpp"
 #include "esp_rom_sys.h"
 #include "Triac.hpp"
+#include "ZeroDetector.hpp"
 #include "esp_log.h"
 
 static const char* TAG = "ShowerDevice";
@@ -81,6 +82,10 @@ void ShowerDevice::start()
         ESP_LOGE(TAG, "Error creating power control task!");
     }
 
+    ZeroDetector& zdet = ZeroDetector::getInstance();
+    zdet.enableIntr();
+
+
 #endif /* CONFIG_TASK_POWER_CONTROL_ENABLE */
 }
 
@@ -88,6 +93,9 @@ void ShowerDevice::stop()
 {
     TaskHandle_t xPCHandle = xTaskPowerControlHandle;
     TaskHandle_t xRSHandle = xTaskReadSensorsHandle;
+    ZeroDetector& zdet = ZeroDetector::getInstance();
+
+    zdet.disableIntr();
     // delete power control task
     xTaskPowerControlHandle = NULL;
     vTaskDelete(xPCHandle);

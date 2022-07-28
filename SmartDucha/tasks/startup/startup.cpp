@@ -31,6 +31,7 @@ void vTaskStartup(void *pvParameters)
     ZeroDetector& zeroDetector = ZeroDetector::getInstance();
     zeroDetector.set_intr_type(idf::GPIOIntrType::RISING_EDGE());
     zeroDetector.registerIsr(ISR_zeroDetector);
+    zeroDetector.disableIntr();
 
 
     ESP_LOGI(TAG, "Startup task finished.");
