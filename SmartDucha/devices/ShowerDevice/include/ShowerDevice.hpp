@@ -10,9 +10,10 @@
  * @date 13-07-2022
  */
 
+#pragma once
+
 #include "Profile.hpp"
 #include "Potencia.hpp"
-#include <sys/_stdint.h>
 
 class ShowerDevice : public Potencia
 {
