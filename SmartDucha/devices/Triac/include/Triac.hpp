@@ -1,4 +1,4 @@
- * 
+/** 
  * @brief Triac device header file
  * 
  * @author Ramon de Araujo Borba <ramonborba97@gmail.com>
