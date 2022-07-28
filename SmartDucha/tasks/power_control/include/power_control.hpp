@@ -28,6 +28,9 @@ extern TaskHandle_t xTaskPowerControlHandle;
 extern StaticTask_t xTaskPowerControlBuffer;
 extern StackType_t  xTaskPowerControlStack[TASK_POWER_CONTROL_STACK_SIZE];
 
+
+#define POWER_CONTROL_INTERRUPT_TIMEOUT         20
+
 /**
  * @brief Power control task
  * 
