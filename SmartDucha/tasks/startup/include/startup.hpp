@@ -20,7 +20,7 @@
 #define TASK_STARTUP_NAME                 "TaskStartup"
 #define TASK_STARTUP_STACK_SIZE           2048
 #define TASK_STARTUP_PRIORITY             1
-#define TASK_STARTUP_CORE        tskNO_AFFINITY
+#define TASK_STARTUP_CORE                 1
 
 extern TaskHandle_t xTaskStartupHandle;
 extern StaticEventGroup_t xStartupEventGroupBuffer;
