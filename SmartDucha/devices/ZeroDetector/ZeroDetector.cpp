@@ -13,6 +13,9 @@
 #include "ZeroDetector.hpp"
 #include "pin_defs.hpp"
 #include "gpio_cxx.hpp"
+#include "esp_log.h"
+
+static const char* TAG = "ZeroDetector";
 
 
 ZeroDetector::ZeroDetector( idf::GPIONum num ) : idf::GPIOInput( num ), isrMngr { idf::GPIOIntrManager::getInstance() } 
@@ -29,10 +32,12 @@ ZeroDetector& ZeroDetector::getInstance()
 
 void ZeroDetector::registerIsr(intr_handler_t isrHandle )
 {
+    ESP_LOGD(TAG, "Registering ZeroDetector ISR...");
     isrMngr.add_isr_handler(get_num(), isrHandle, NULL);
 }
 
 void ZeroDetector::removeIsr()
 {
+    ESP_LOGD(TAG, "Removing ZeroDetector ISRs...");
     isrMngr.remove_isr_handler(get_num());
 }
