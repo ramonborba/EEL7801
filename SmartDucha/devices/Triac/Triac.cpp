@@ -24,7 +24,7 @@ Triac::Triac(idf::GPIONum num) : idf::GPIO_Output(num) {}
 
 Triac& Triac::getInstance()
 {
-    static Triac singleton {idf::GPIONum(HEARTBEAT_LED_PIN)};
+    static Triac singleton {idf::GPIONum(TRIAC_PIN)};
     return singleton;
 }
 
@@ -32,7 +32,7 @@ void Triac::pulse()
 {
     ESP_LOGV(TAG, "<Pulsing Triac>");
     set_high();
-    esp_rom_delay_us(50000);
+    esp_rom_delay_us(TRIAC_PULSE_WIDTH_US);
     set_low();
-    esp_rom_delay_us(50000);
+    esp_rom_delay_us(TRIAC_PULSE_WIDTH_US);
 }

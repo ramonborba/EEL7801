@@ -1,5 +1,3 @@
-/**
- * @file Triac.hpp
  * 
  * @brief Triac device header file
  * 
@@ -9,9 +7,11 @@
  * 
  * @date22-07-2022 
  */
+#pragma once
 
 #include "gpio_cxx.hpp"
 
+#define TRIAC_PULSE_WIDTH_US            50000
 
 class Triac : private idf::GPIO_Output
 {
