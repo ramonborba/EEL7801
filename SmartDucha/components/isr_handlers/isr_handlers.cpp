@@ -18,14 +18,11 @@
 
 void ISR_zeroDetector (void* pvParameters)
 {
-    static TickType_t last_time = 0;
     BaseType_t pxHigherPriorityTaskWoken = pdFALSE;
     uint32_t nValue = 0;
-    TickType_t now = xTaskGetTickCountFromISR();
-    if ( ( (now - last_time) >= (DBOUNCE_THRESHOLD) ) && xTaskPowerControlHandle )
+    if ( xTaskPowerControlHandle )
     {
         xTaskGenericNotifyFromISR(xTaskPowerControlHandle, 0, 0, eNoAction, &nValue, &pxHigherPriorityTaskWoken);
-        last_time = now;
         portYIELD_FROM_ISR(pxHigherPriorityTaskWoken);
     }
 }
