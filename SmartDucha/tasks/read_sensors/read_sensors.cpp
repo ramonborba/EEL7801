@@ -30,11 +30,11 @@ void vTaskReadSensors(void *pvParameters)
     {
         TickType_t lastWakeTime = xTaskGetTickCount();
 
-        uint8_t buffer = {0};
+        float buffer = {0};
 
-        ESP_LOGI(TAG, "Reading water temperature.");
+        ESP_LOGD(TAG, "Reading water temperature.");
         buffer = tempSensor.readNTC();
-        ESP_LOGD(TAG, "Water temperature: %d", buffer);
+        ESP_LOGI(TAG, "Water temperature: %f", buffer);
 
         xTaskDelayUntil(&lastWakeTime, pdMS_TO_TICKS(TASK_READ_SENSORS_PERIOD_MS));
     }

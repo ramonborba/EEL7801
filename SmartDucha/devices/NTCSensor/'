@@ -18,17 +18,11 @@
 #include "hal/adc_types.h"
 
 #define NTC_ADC_UNIT            ADC_UNIT_1
-#define NTC_ADC_CHANNEL         ADC_CHANNEL_4
+#define NTC_ADC_CHANNEL         ADC1_CHANNEL_4
 #define NTC_ADC_ATTEN           ADC_ATTEN_DB_11
-#define NTC_ADC_BIT_WIDTH       ADC_WIDTH_BIT_12
+#define NTC_ADC_BIT_WIDTH       ADC_WIDTH_BIT_DEFAULT
 
-struct adc_config_t 
-{
-    adc_atten_t atten;
-    adc_channel_t channel;
-    adc_unit_t unit;
-    adc_bits_width_t bit_width;
-};
+
 
 class NTCSensor
 {
@@ -37,13 +31,13 @@ private:
      * @brief Raw reading from adc
      * 
      */
-    double _value;
+    uint8_t _value;
 
-    NTCSensor( adc_config_t );
+    NTCSensor( adc_digi_pattern_config_t );
     // TODO: Add ADC port information
 
         esp_adc_cal_characteristics_t _ntcChars;
-        adc_config_t _config;
+        adc_digi_pattern_config_t _config;
 
 public:
     
@@ -56,8 +50,9 @@ public:
     
     static NTCSensor& getInstance();
 
-    double readNTC();
-    double getTemp();
+    void setup();
+    uint8_t readNTC();
+    uint8_t getTemp();
 };
 
 #endif /* NTCSENSOR_HPP_ */

@@ -12,7 +12,12 @@
 
 #include "ShowerState.hpp"
 #include "ShowerDevice.hpp"
+#include "freertos/portmacro.h"
+#include "isr_handlers.hpp"
+#include "freertos/FreeRTOS.h"
+#include "freertos/queue.h"
 #include "esp_log.h"
+#include <sys/_stdint.h>
 
 static const char* TAG = "ShowerState";
 
@@ -38,7 +43,8 @@ void IdleState::run( ShowerStateMachine* ssm )
      * set up queue to receive key presses
      */
 
-    if (true /* key pressed */)
+    uint8_t buffer =0;
+    if ( xQueueReceive(xButtonIntrQueue, (void*)&buffer, portMAX_DELAY) /* key pressed */)
     {
         // Change to  state
         ssm->setState( SelectUser::getInstance() );
@@ -90,7 +96,8 @@ void SelectUser::run( ShowerStateMachine* ssm )
      */
     uint8_t typedID = 0;
 
-    if (true /* ID valid */)
+    uint8_t buffer =0;
+    if ( xQueueReceive(xButtonIntrQueue, (void*)&buffer, portMAX_DELAY) /* key pressed */)
     {
         ssm->userManager.setCurrentUser( typedID /* profileID */ );
         ssm->setState( BeginShower::getInstance() );
@@ -178,7 +185,11 @@ void ManualControl::run( ShowerStateMachine* ssm )
         // shower.updateX( newValue );
     }
     
+    uint8_t buffer =0;
+    if ( xQueueReceive(xButtonIntrQueue, (void*)&buffer, portMAX_DELAY) /* key pressed */)
+    {
     ssm->setState( EndShower::getInstance() );
+    }
 }
 
 void ManualControl::exit( ShowerStateMachine* ssm )

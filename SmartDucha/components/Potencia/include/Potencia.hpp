@@ -29,14 +29,14 @@ protected:
 
     uint8_t _potencia_anterior;
 
-    uint8_t _Temp2Pot(uint8_t temperatura_atual, uint8_t temperatura_alvo);
+    uint8_t _Temp2Pot(float temperatura_atual, float temperatura_alvo);
     uint16_t setInitialPower( uint8_t initialPower );
 
 public:
     Potencia();
     ~Potencia() = default;
 
-    uint16_t tempo(uint8_t temperatura_atual, uint8_t temperatura_alvo); // achei melhor assim para caso queiranois alterar depois
+    uint16_t tempo(float temperatura_atual, float temperatura_alvo); // achei melhor assim para caso queiranois alterar depois
 };
 
 #endif /* POTENCIA_HPP_ */

@@ -32,15 +32,15 @@ uint16_t Potencia::setInitialPower(uint8_t initialPower)
     return _tempos[initialPower];
 }
 
-uint8_t Potencia::_Temp2Pot(uint8_t temperatura_atual, uint8_t temperatura_alvo)
+uint8_t Potencia::_Temp2Pot(float temperatura_atual, float temperatura_alvo)
 {
     if (temperatura_atual > temperatura_alvo)
     {
-        return _potencia_anterior--;
+        return (_potencia_anterior > POTMIN) ? _potencia_anterior-- : POTMIN;
     }
     else if (temperatura_atual < temperatura_alvo)
     {
-        return _potencia_anterior++;
+        return (_potencia_anterior < POTMAX) ? _potencia_anterior++ : POTMAX;
     }
     else
     {
@@ -48,13 +48,13 @@ uint8_t Potencia::_Temp2Pot(uint8_t temperatura_atual, uint8_t temperatura_alvo)
     }
 }
 
-uint16_t Potencia::tempo(uint8_t temperatura_atual, uint8_t temperatura_alvo)
+uint16_t Potencia::tempo(float temperatura_atual, float temperatura_alvo)
 {
     uint8_t potencia= _Temp2Pot(temperatura_atual, temperatura_alvo);
 
     if (potencia < POTMIN)
     {
-        return -1;
+        return _tempos[POTMIN];
     }
     else if (potencia > POTMAX)
     {

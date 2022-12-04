@@ -33,5 +33,5 @@ public:
     void start();
     void stop();
     void delay();
-    void updateToff( uint8_t, uint8_t );
+    void updateToff( float, float );
 };

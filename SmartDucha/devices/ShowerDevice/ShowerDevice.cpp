@@ -118,7 +118,7 @@ void ShowerDevice::delay()
     esp_rom_delay_us(_Toff);
 }
 
-void ShowerDevice::updateToff( uint8_t currentTemp, uint8_t userTemp )
+void ShowerDevice::updateToff( float currentTemp, float userTemp )
 {
     _Toff = tempo(currentTemp, userTemp);
 }

@@ -63,8 +63,8 @@ void vTaskPowerControl(void *pvParameters)
     Triac& triac = Triac::getInstance();
     
     TickType_t startTime = xTaskGetTickCount();
-    TickType_t maxTime = profile.getShowerConfig().tempo_maximo * 60 * xPortGetTickRateHz();
-
+    // TickType_t maxTime = profile.getShowerConfig().tempo_maximo * 60 * xPortGetTickRateHz();
+    TickType_t maxTime = pdMS_TO_TICKS(30000);
     while (true)
     {
         while ( waitInerrupt() && checkTimeout( (xTaskGetTickCount() - startTime), maxTime ) )

@@ -20,7 +20,7 @@
 #define TASK_READ_SENSORS_NAME                 "TaskReadSensors"
 #define TASK_READ_SENSORS_STACK_SIZE           2048
 #define TASK_READ_SENSORS_PRIORITY             1
-#define TASK_READ_SENSORS_PERIOD_MS            10000
+#define TASK_READ_SENSORS_PERIOD_MS            1000
 #define TASK_READ_SENSORS_CORE                 0
 #define TASK_READ_SENSORS_INIT_TIMEOUT_MS      2000
 

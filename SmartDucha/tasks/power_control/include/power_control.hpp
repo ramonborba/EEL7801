@@ -18,8 +18,8 @@
 
 /* Task properties */
 #define TASK_POWER_CONTROL_NAME                 "TaskPowerControl"
-#define TASK_POWER_CONTROL_STACK_SIZE           2048
-#define TASK_POWER_CONTROL_PRIORITY             1
+#define TASK_POWER_CONTROL_STACK_SIZE           4096
+#define TASK_POWER_CONTROL_PRIORITY             10
 #define TASK_POWER_CONTROL_PERIOD_MS            10000
 #define TASK_POWER_CONTROL_CORE                 1
 #define TASK_POWER_CONTROL_INIT_TIMEOUT_MS      2000

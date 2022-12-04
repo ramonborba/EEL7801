@@ -11,7 +11,7 @@
 
 #include "gpio_cxx.hpp"
 
-#define TRIAC_PULSE_WIDTH_US            50000
+#define TRIAC_PULSE_WIDTH_US            10
 
 class Triac : private idf::GPIO_Output
 {
